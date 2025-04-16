@@ -1,0 +1,28 @@
+.home{
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    gap: 100px; 
+}
+
+.logoH img{
+    height: 350px;
+}
+
+.content{
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    width: 800px;
+    text-align: justify;
+}
+
+.button button{
+    height: 50px;
+    width: 250px;
+    font-size: 15px ;
+    color: #303943;
+}
