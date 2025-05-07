@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../components/header/Header';
-import Sidebar from '../../components/sideBar/Sidebar';
+import Sidebar from '../../components/sideBar/SideBar';
 import Modal from '../../components/modals/ticketRegistrationModal';
 import { useTicketRegisterController } from '../../controllers/TicketRegistrationController';
 import './TicketRegistration.css';
