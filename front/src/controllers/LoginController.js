@@ -6,7 +6,18 @@ export const useLoginController = () => {
   const [password, setPassword] = useState('');
   const [errorMessageEmail, setErrorMessageEmail] = useState('');
   const [errorMessagePassword, setErrorMessagePassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const navigate = useNavigate();
+
+  const BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://ticketflow-7gd8.onrender.com';
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +25,7 @@ export const useLoginController = () => {
     setErrorMessagePassword('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -35,7 +46,7 @@ export const useLoginController = () => {
         }
         return;
       }
-      navigate('/');
+      navigate('/ticketRegistration');
 
     } catch (error) {
       console.error('Error logging in:', error);
@@ -50,6 +61,7 @@ export const useLoginController = () => {
     setPassword,
     errorMessageEmail,
     errorMessagePassword,
-    handleSubmit
+    handleSubmit,
+    togglePasswordVisibility
   };
 };

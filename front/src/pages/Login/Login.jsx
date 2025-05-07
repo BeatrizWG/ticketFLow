@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../../components/header/Header';
 import "./Login.css";
 import { Link } from 'react-router-dom';
-import { useLoginController } from '../../controllers/loginController';
+import { useLoginController } from '../../controllers/LoginController';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const menuLogin = [
@@ -12,11 +12,6 @@ const menuLogin = [
 
 export const Login = () => {
   const response = useLoginController();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <>
@@ -42,20 +37,20 @@ export const Login = () => {
               <div className="input-container">
                 <FaLock className="icon" />
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={response.showPassword ? "text" : "password"}
                   placeholder="Senha"
                   value={response.password}
                   onChange={(e) => response.setPassword(e.target.value)}
                 />
-                <span onClick={togglePasswordVisibility} className="eye-icon">
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                <span onClick={response.togglePasswordVisibility} className="eye-icon">
+                  {response.showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
               <p className="error-message">{response.errorMessagePassword}</p>
             </div>
 
             <div className="itens">
-              <Link to="/" className="right-link">Esqueci a senha</Link>
+              <Link to="/forgetPassword" className="right-link">Esqueci a senha</Link>
             </div>
 
             <button type="submit">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const useRegisterController = () => {
   const [name, setName] = useState('');
@@ -12,8 +13,25 @@ export const useRegisterController = () => {
   const [errorMessageAccessCode, setErrorMessageAccessCode] = useState('');
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const navigate = useNavigate();
+  
+  const BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://ticketflow-7gd8.onrender.com';
+
+
+  const handleModalClose = () => {
+    setShowSuccessModal(false);
+    navigate('/login');
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+    const handleSubmit = async (e) => {
     e.preventDefault();
 
     setErrorMessageName('');
@@ -22,7 +40,7 @@ export const useRegisterController = () => {
     setErrorMessageAccessCode('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch(`${BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -69,6 +87,9 @@ export const useRegisterController = () => {
     errorMessageAccessCode,
     handleSubmit,
     showSuccessModal,
-    setShowSuccessModal
+    setShowSuccessModal,
+    showPassword,
+    togglePasswordVisibility,
+    handleModalClose
   };
 };

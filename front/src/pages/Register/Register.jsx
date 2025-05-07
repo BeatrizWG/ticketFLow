@@ -1,8 +1,7 @@
-import React, { useState } from 'react';  
 import Header from '../../components/header/Header';
 import './Register.css';
-import { useRegisterController } from '../../controllers/RegisterController';
-import Modal from '../../components/modals/RegisterModal';
+import { useRegisterController } from '../../controllers/registerController';
+import Modal from '../../components/modals/registerModal';
 import { FaUser, FaEnvelope, FaLock, FaKey, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const menuRegister = [
@@ -13,16 +12,6 @@ const menuRegister = [
 
 export const Register = () => {
   const response = useRegisterController();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleModalClose = () => {
-    response.setShowSuccessModal(false);
-    window.location.href = '/login'; 
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <>
@@ -63,14 +52,14 @@ export const Register = () => {
               <div className="input-container">
                 <FaLock className="icon" />
                 <input
-                  type={showPassword ? "text" : "password"} 
+                  type={response.showPassword ? "text" : "password"} 
                   name="password"
                   placeholder="Senha"
                   value={response.password}
                   onChange={(e) => response.setPassword(e.target.value)}
                 />
-                <span onClick={togglePasswordVisibility} className="eye-icon">
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                <span onClick={response.togglePasswordVisibility} className="eye-icon">
+                  {response.showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
               <p className="error-message">{response.errorMessagePassword}</p>
@@ -92,7 +81,7 @@ export const Register = () => {
 
             <button type="submit" disabled={response.showSuccessModal}>ENVIAR</button>
           </form> 
-          {response.showSuccessModal && <Modal onClose={handleModalClose} />}
+          {response.showSuccessModal && <Modal onClose={response.handleModalClose} />}
         </div>
       </div>
     </>
