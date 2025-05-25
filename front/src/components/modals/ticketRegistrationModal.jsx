@@ -1,11 +1,10 @@
-import React from 'react';
-import './registerModal.css';
+import './Modal.css';
 
-const Modal = ({ onClose }) => {
+const TicketRegistrationModal = ({ onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h3>Ticket cadastrado com sucesso!</h3>
+        <h3>Ticket registered successfully!</h3>
         <div className="modal-button-container">
           <button onClick={onClose}>OK</button>
         </div>
@@ -14,4 +13,4 @@ const Modal = ({ onClose }) => {
   );
 };
 
-export default Modal;
+export default TicketRegistrationModal;

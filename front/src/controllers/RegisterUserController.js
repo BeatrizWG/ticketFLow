@@ -16,7 +16,7 @@ export const useRegisterController = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
-  
+
   const BASE_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:5000'
     : 'https://ticketflow-7gd8.onrender.com';
@@ -31,7 +31,7 @@ export const useRegisterController = () => {
     setShowPassword((prev) => !prev);
   };
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setErrorMessageName('');

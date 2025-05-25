@@ -1,5 +1,4 @@
-import React from 'react';
-import "./Header.css";
+import "./PageHeader.css";
 
 const Header = ({ menuItems }) => {
   return (

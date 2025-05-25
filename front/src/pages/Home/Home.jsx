@@ -1,12 +1,11 @@
-import React from 'react'
-import Header from '../../components/header/Header'
+import Header from '../../components/header/PageHeader'
 import "./Home.css"
 import { useNavigate } from 'react-router-dom';
 
 const menuHome = [
   { label: "LOGIN |", href: "/login" },
-  { label: "CADASTRO |", href: "/register" },
-  { label: "SOBRE", href: "/about" },
+  { label: "REGISTER |", href: "/register" },
+  { label: "ABOUT", href: "/about" },
 ];
 
 const Home = () => {

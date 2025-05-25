@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SECRET_KEY = process.env.SECRET_KEY; 
+const SECRET_KEY = process.env.SECRET_KEY;
 
 router.post('/api/auth/login', async (req, res) => {
   const body = req.body;
@@ -40,17 +40,17 @@ router.post('/api/auth/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid email credential.' });
     }
 
-    const validPassword = await bcrypt.compare(password, user.password); 
+    const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       console.error(`Incorrect password for user ${user.email}.`);
       return res.status(401).json({ error: 'Invalid password credential.' });
     }
 
-    const token = jwt.sign({ email: user.email}, SECRET_KEY, { expiresIn: '2h' });
+    const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '2h' });
     res.cookie('token', token, {
       httpOnly: true,
-      secure: false,
-      sameSite: 'Strict'
+      secure: true,
+      sameSite: 'None'
     });
 
     console.log(`User ${email} successfully logged in.`);

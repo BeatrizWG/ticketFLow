@@ -1,13 +1,13 @@
-import Header from '../../components/header/Header';
+import Header from '../../components/header/PageHeader';
 import './Register.css';
-import { useRegisterController } from '../../controllers/registerController';
-import Modal from '../../components/modals/registerModal';
+import { useRegisterController } from '../../controllers/RegisterUserController';
+import Modal from '../../components/modals/RegisterUserModal';
 import { FaUser, FaEnvelope, FaLock, FaKey, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const menuRegister = [
   { label: 'LOGIN |', href: '/login' },
   { label: 'HOME |', href: '/' },
-  { label: 'SOBRE', href: '/about' }
+  { label: 'ABOUT', href: '/about' }
 ];
 
 export const Register = () => {
@@ -17,7 +17,7 @@ export const Register = () => {
     <>
       <Header menuItems={menuRegister} />
       <div className="register">
-        <h2>Crie sua conta</h2>
+        <h2>Create your account</h2>
         <div className="form">
           <form onSubmit={response.handleSubmit}>
             <div className="itens">
@@ -26,7 +26,7 @@ export const Register = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Nome completo"
+                  placeholder="Full name"
                   value={response.name}
                   onChange={(e) => response.setName(e.target.value)}
                 />
@@ -54,7 +54,7 @@ export const Register = () => {
                 <input
                   type={response.showPassword ? "text" : "password"} 
                   name="password"
-                  placeholder="Senha"
+                  placeholder="Password"
                   value={response.password}
                   onChange={(e) => response.setPassword(e.target.value)}
                 />
@@ -71,7 +71,7 @@ export const Register = () => {
                 <input
                   type="text"
                   name="accessCode"
-                  placeholder="Código de acesso"
+                  placeholder="Access Code"
                   value={response.accessCode}
                   onChange={(e) => response.setAccessCode(e.target.value)}
                 />
@@ -79,7 +79,7 @@ export const Register = () => {
               <p className="error-message">{response.errorMessageAccessCode}</p>
             </div>
 
-            <button type="submit" disabled={response.showSuccessModal}>ENVIAR</button>
+            <button type="submit" disabled={response.showSuccessModal}>SUBMIT</button>
           </form> 
           {response.showSuccessModal && <Modal onClose={response.handleModalClose} />}
         </div>

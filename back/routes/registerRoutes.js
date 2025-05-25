@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/Users');
-const bcrypt = require('bcrypt');
 
 const nameRegex = /^[A-Za-zÀ-ÿ\s]+$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -11,7 +10,7 @@ const userAccessCodeRegex = /^(?=(?:.*[Uu])(?=.*[Ss])(?=.*[Rr]))(?=.*[A-Za-z])(?
 
 router.post('/api/auth/register', async (req, res) => {
   const body = req.body;
-  console.log('Request Body:', req.body); 
+  console.log('Request Body:', req.body);
 
   const name = body.name;
   const email = body.email.trim().toLowerCase();
@@ -103,7 +102,7 @@ router.post('/api/auth/register', async (req, res) => {
 
   const newUser = new Users({ name, email, password, accessCode, userType });
 
-  try { 
+  try {
     await newUser.save();
     console.info('User created successfully.');
     return res.status(201).json({ message: 'User created successfully.' });

@@ -61,7 +61,7 @@ export const useTicketRegisterController = () => {
 
 
         try {
-            const response = await fetch(`${BASE_URL}/api/auth/ticketRegistration`, {
+            const response = await fetch(`${BASE_URL}/api/ticketRegistration`, {
                 method: 'POST',
                 headers: {
                     'content-Type': 'application/json'

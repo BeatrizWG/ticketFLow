@@ -2,9 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
-const authRoutes = require('./routes/authRoutes');
-const registerRoutes = require('./routes/registerRoutes');
+const registerRoutes = require('./routes/RegisterRoutes');
+const authRoutes = require('./routes/AuthRoutes');
 const ticketRegistrationRoutes = require('./routes/TicketRegistrationRoutes')
+const tokenValidation = require('./routes/TokenValidation')
+const logoutRoutes = require('./routes/LogoutRoutes')
 
 const app = express();
 
@@ -13,13 +15,14 @@ app.use(cors({
   credentials: true
 }));
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(ticketRegistrationRoutes)
+app.use(registerRoutes);
 app.use(authRoutes); 
-app.use(registerRoutes); 
+app.use(ticketRegistrationRoutes)
+app.use(tokenValidation); 
+app.use(logoutRoutes); 
 
 module.exports = app;

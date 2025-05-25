@@ -1,21 +1,32 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import  Home  from "./pages/Home/Home";
-import Header from './components/header/Header';
+import Home from "./pages/Home/Home";
+import Header from './components/header/PageHeader';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
-import { TicketRegistration } from "./pages/TicketRegistration/TicketRegistration";
+import TicketRegistration from './pages/TicketRegistration/TicketRegistration';
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AccessDenied from "./pages/AccessDenied/AccessDenied";
 
 function App() {
   return (
     <>
-    <Routes>
-      <Route path="/header" element={<Header/>}/> 
-      <Route path="/" element={<Home/>}/> 
-      <Route path="/register" element={<Register/>}/> 
-      <Route path="/login" element={<Login/>}/> 
-      <Route path="/ticketRegistration" element ={<TicketRegistration/>}/>
-    </Routes>
+      <Routes>
+        <Route path="/header" element={<Header />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/accessDenied" element={<AccessDenied />} />
+
+        <Route
+          path="/ticketRegistration"
+          element={
+            <ProtectedRoute>
+              <TicketRegistration />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </>
   )
 }

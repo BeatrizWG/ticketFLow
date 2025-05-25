@@ -1,7 +1,6 @@
-import React from 'react';
-import Header from '../../components/header/Header';
+import Header from '../../components/header/PageHeader';
 import Sidebar from '../../components/sideBar/SideBar';
-import Modal from '../../components/modals/ticketRegistrationModal';
+import Modal from '../../components/modals/TicketRegistrationModal';
 import { useTicketRegisterController } from '../../controllers/TicketRegistrationController';
 import './TicketRegistration.css';
 
@@ -15,9 +14,7 @@ import {
   FaBug
 } from 'react-icons/fa';
 
-const menuTicketRegistration = [
-  { label: "CONTA", href: "/account" }
-];
+const menuTicketRegistration = [];
 
 export const TicketRegistration = () => {
   const response = useTicketRegisterController();
@@ -27,7 +24,7 @@ export const TicketRegistration = () => {
       <Header menuItems={menuTicketRegistration} />
       <Sidebar />
       <div className='ticketregistration'>
-        <h2>CADASTRE O SEU TICKET</h2>
+        <h2>REGISTER YOUR TICKET</h2>
         <div className='ticketForm'>
           <form onSubmit={response.handleSubmit}>
             <div className="dataLeft">

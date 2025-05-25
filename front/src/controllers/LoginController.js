@@ -9,7 +9,7 @@ export const useLoginController = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prev) => !prev);
   };
 
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const useLoginController = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        credentials: 'include', 
+        credentials: 'include',
         body: JSON.stringify({ email, password })
       });
 
@@ -62,6 +62,7 @@ export const useLoginController = () => {
     errorMessageEmail,
     errorMessagePassword,
     handleSubmit,
-    togglePasswordVisibility
+    togglePasswordVisibility,
+    showPassword
   };
 };
