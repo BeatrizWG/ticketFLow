@@ -7,6 +7,7 @@ import Login from './pages/Login/Login';
 import TicketRegistration from './pages/TicketRegistration/TicketRegistration';
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AccessDenied from "./pages/AccessDenied/AccessDenied";
+import About from "./pages/About/About";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/accessDenied" element={<AccessDenied />} />
+        <Route path="/about" element={<About />} />
 
         <Route
           path="/ticketRegistration"
