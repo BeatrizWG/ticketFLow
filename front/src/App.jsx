@@ -8,6 +8,7 @@ import TicketRegistration from './pages/TicketRegistration/TicketRegistration';
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AccessDenied from "./pages/AccessDenied/AccessDenied";
 import About from "./pages/About/About";
+import RecoveryEmail from "./pages/ChangePassword/RecoveryEmail";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/accessDenied" element={<AccessDenied />} />
         <Route path="/about" element={<About />} />
+        <Route path="/recovery" element={<RecoveryEmail />} />
 
         <Route
           path="/ticketRegistration"
