@@ -10,6 +10,7 @@ import AccessDenied from "./pages/AccessDenied/AccessDenied";
 import About from "./pages/About/About";
 import RecoveryEmail from "./pages/ChangePassword/RecoveryEmail";
 import ResetPassword from "./pages/ChangePassword/ResetPassword";
+import AllTickets from "./pages/AllTickets/AllTickets";
 
 function App() {
   return (
@@ -32,6 +33,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/allTickets"
+          element={
+            <ProtectedRoute>
+              <AllTickets />
+            </ProtectedRoute>
+          }
+        />
+
+
       </Routes>
     </>
   )
