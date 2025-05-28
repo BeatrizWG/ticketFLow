@@ -11,6 +11,7 @@ import About from "./pages/About/About";
 import RecoveryEmail from "./pages/ChangePassword/RecoveryEmail";
 import ResetPassword from "./pages/ChangePassword/ResetPassword";
 import AllTickets from "./pages/AllTickets/AllTickets";
+import UserTickets from "./pages/UserTickets/UserTickets";
 
 function App() {
   return (
@@ -41,7 +42,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/userTickets"
+          element={
+            <ProtectedRoute>
+              <UserTickets />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </>
