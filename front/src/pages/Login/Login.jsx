@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Header from '../../components/header/Header';
+import Header from '../../components/header/PageHeader';
 import "./Login.css";
 import { Link } from 'react-router-dom';
 import { useLoginController } from '../../controllers/LoginController';
@@ -7,7 +6,7 @@ import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const menuLogin = [
   { label: "HOME |", href: "/" },
-  { label: "SOBRE", href: "/about" }
+  { label: "ABOUT", href: "/about" }
 ];
 
 export const Login = () => {
@@ -17,7 +16,7 @@ export const Login = () => {
     <>
       <Header menuItems={menuLogin} />
       <div className='login'>
-        <h2>Acesse sua conta</h2>
+        <h2>Access your account</h2>
         <div className='formLogin'>
           <form onSubmit={response.handleSubmit}>
             <div className="itens">
@@ -38,7 +37,7 @@ export const Login = () => {
                 <FaLock className="icon" />
                 <input
                   type={response.showPassword ? "text" : "password"}
-                  placeholder="Senha"
+                  placeholder="Password"
                   value={response.password}
                   onChange={(e) => response.setPassword(e.target.value)}
                 />
@@ -50,15 +49,15 @@ export const Login = () => {
             </div>
 
             <div className="itens">
-              <Link to="/forgetPassword" className="right-link">Esqueci a senha</Link>
+              <Link to="/recovery" className="right-link">Forgot password</Link>
             </div>
 
             <button type="submit">
-              ENVIAR
+              SUBMIT
             </button>
 
             <div className="itens">
-              <Link to="/register" className="left-link">Não tem conta? <strong>Cadastre-se</strong></Link>
+              <Link to="/register" className="left-link">Don't have an account? <strong>Sign up</strong></Link>
             </div>
           </form>
         </div>
