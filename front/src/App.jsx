@@ -2,17 +2,18 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Header from './components/header/PageHeader';
+import About from "./pages/About/About";
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import TicketRegistration from './pages/TicketRegistration/TicketRegistration';
 import ProtectedRoute from "./routes/ProtectedRoute";
-import AccessDenied from "./pages/AccessDenied/AccessDenied";
-import About from "./pages/About/About";
 import RecoveryEmail from "./pages/ChangePassword/RecoveryEmail";
 import ResetPassword from "./pages/ChangePassword/ResetPassword";
-import AllTickets from "./pages/AllTickets/AllTickets";
+import AccessDenied from "./pages/AccessDenied/AccessDenied";
 import UserTickets from "./pages/UserTickets/UserTickets";
+import AllTickets from "./pages/AllTickets/AllTickets";
 import PrioritiseTickets from "./pages/PrioritiseTicket/PrioritiseTicket";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -20,26 +21,18 @@ function App() {
       <Routes>
         <Route path="/header" element={<Header />} />
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/accessDenied" element={<AccessDenied />} />
-        <Route path="/about" element={<About />} />
         <Route path="/recovery" element={<RecoveryEmail />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/accessDenied" element={<AccessDenied />} />
 
         <Route
           path="/ticketRegistration"
           element={
             <ProtectedRoute>
               <TicketRegistration />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/allTickets"
-          element={
-            <ProtectedRoute>
-              <AllTickets />
             </ProtectedRoute>
           }
         />
@@ -52,6 +45,15 @@ function App() {
           }
         />
         <Route
+          path="/allTickets"
+          element={
+            <ProtectedRoute>
+              <AllTickets />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/prioritiseTickets"
           element={
             <ProtectedRoute>
@@ -59,7 +61,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   )
