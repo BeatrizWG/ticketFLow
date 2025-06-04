@@ -13,6 +13,7 @@ import AccessDenied from "./pages/AccessDenied/AccessDenied";
 import UserTickets from "./pages/UserTickets/UserTickets";
 import AllTickets from "./pages/AllTickets/AllTickets";
 import PrioritiseTickets from "./pages/PrioritiseTicket/PrioritiseTicket";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -60,7 +61,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   )
